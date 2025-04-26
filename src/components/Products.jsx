@@ -3,8 +3,8 @@ import pro_1 from '../assets/pro-1.jpg';
 import pro_2 from '../assets/pro-2.jpg';
 
 const products = [
-  { id: 1, title: 'Makeup Kit', price: 20, image: pro_1, description: 'There are many variations of passages of lorem ipsum' },
-  { id: 2, title: 'Clothes', price: 30, image: pro_2, description: 'There are many variations of passages of lorem ipsum' },
+  { id: 1, title: 'Software Solutions', price: 20, image: pro_1, description: 'Apps to optimize your operations and enhance efficiency' },
+  { id: 2, title: 'Digital Products', price: 30, image: pro_2, description: 'Integrated Marketing to reach new potential' },
 ];
 
 const ProductCarousel = () => {
@@ -72,12 +72,14 @@ const ProductCarousel = () => {
 
         {/* Proceed Button */}
         <div className="text-center mt-6">
-          <button
+      
+            <button
             onClick={handleProceed}
-            className="bg-[#fcb63c] max-w-fit mx-auto text-white text-sm px-4 py-2 rounded-lg shadow-md hover:bg-[#ffd284] transition"
+            className="bg-gradient-to-l from-[#FBAC20] to-black max-w-fit mx-auto text-white text-sm px-4 py-2 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-black hover:to-[#FBAC20] transition duration-300"
           >
             Proceed to Payment
           </button>
+
         </div>
       </div>
     </div>

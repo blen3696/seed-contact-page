@@ -39,7 +39,6 @@ const TestimonialsSlider = () => {
 
   const { name, image, quote } = testimonials[currentIndex];
 
-  // Navigate to the next or previous testimonial
   const goToNext = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   const goToPrevious = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 

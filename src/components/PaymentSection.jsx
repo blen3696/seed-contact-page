@@ -7,10 +7,10 @@ import aw_logo from '../assets/Awash-logo.png';
 import qr_logo from '../assets/qr.png';
 
 const paymentOptions = [
-  { name: 'TeleBirr', logo: t_logo, bankNumber: '0910700960' },
-  { name: 'CBE Birr', logo: c_logo, bankNumber: '1000378075347' },
-  { name: 'Abyssinia', logo: a_logo, bankNumber: '16232947' },
-  { name: 'Awash', logo: aw_logo, bankNumber: '5566778899' },
+  { name: 'TeleBirr', logo: t_logo, bankNumber: '0910700960', qr_code: qr_logo },
+  { name: 'CBE Birr', logo: c_logo, bankNumber: '1000378075347', qr_code: qr_logo  },
+  { name: 'Abyssinia', logo: a_logo, bankNumber: '16232947', qr_code: qr_logo  },
+  { name: 'Awash', logo: aw_logo, bankNumber: '5566778899', qr_code: qr_logo  },
 ];
 
 export default function PaymentSection() {
@@ -59,7 +59,7 @@ export default function PaymentSection() {
 
             <div className="bg-gray-100 rounded-lg h-40 flex items-center justify-center mb-4">
               <img
-                src={qr_logo}
+                src={selectedPayment.qr_code}
                 alt="QR Code"
                 className="h-28 w-28 sm:h-32 sm:w-32 object-contain"
               />
