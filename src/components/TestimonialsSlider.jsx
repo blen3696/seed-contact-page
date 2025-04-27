@@ -19,11 +19,7 @@ const testimonials = [
     image: ave1,
     quote: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
   },
-  {
-    name: 'Sarah Williams',
-    image: ave1,
-    quote: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
-  },
+
 ];
 
 const TestimonialsSlider = () => {
@@ -69,7 +65,7 @@ const TestimonialsSlider = () => {
           <span
             key={idx}
             className={`h-[6px] rounded-full transition-all ${
-              currentIndex === idx ? 'w-4 bg-[#FBAC20]' : 'w-[6px] bg-gray-300'
+              currentIndex === idx ? 'w-5 bg-[#FBAC20]' : 'w-[6px] bg-gray-300'
             }`}
           />
         ))}

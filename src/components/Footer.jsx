@@ -14,6 +14,7 @@ const Footer = () => {
     name: '',
     email: '',
     phone: '',
+    company: '',
   });
 
   const handleInputChange = (e) => {
@@ -154,9 +155,11 @@ END:VCARD`;
 
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 mt-10 pt-6 text-center text-white text-sm">
-          &copy; {new Date().getFullYear()} | Powered by S.E.E.D
+          &copy; {new Date().getFullYear()} | Powered by <a href="https://seedgit.com/" target='blank' className='text-[#FBAC20]'> S.E.E.D</a>
         </div>
       </div>
+
+
 
       {/* Modal for Registration */}
       {modalOpen && (
@@ -198,11 +201,22 @@ END:VCARD`;
                   className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#FBAC20]"
                 />
               </div>
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#FBAC20]"
+                />
+              </div>
               <div className="flex justify-end gap-4">
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+                  className="px-4 py-2 text-black rounded border-2 border-gradient-to-l from-[#FBAC20] to-black "
                 >
                   Cancel
                 </button>

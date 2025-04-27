@@ -1,38 +1,50 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // 🛣️
+import { useNavigate } from 'react-router-dom'; 
 
-const hours = ['09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM'];
+const hours = ['09:00 AM', '11:00 AM', '1:00 PM', '3:00 PM'];
 
 const AppointmentForm = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedHour, setSelectedHour] = useState('');
-  const navigate = useNavigate(); // 🛣️
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!selectedDate || !selectedHour) {
       alert('Please select both date and hour!');
       return;
     }
+  
 
+    const hourParts = selectedHour.split(' ');
+    let [hours, minutes] = hourParts[0].split(':').map(Number);
+  
+    if (hourParts[1] === 'PM' && hours !== 12) {
+      hours += 12;
+    }
+    if (hourParts[1] === 'AM' && hours === 12) {
+      hours = 0;
+    }
+  
+    const formattedHour = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+  
     const appointment = {
       date: selectedDate,
-      hour: selectedHour,
+      hour: formattedHour, 
     };
-
+  
     try {
       const response = await fetch('http://localhost:5000/api/appointments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(appointment),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
-        // Instead of alert
-        navigate('/thank-you'); 
+        navigate('/thank-you');
       } else {
         alert(data.message);
       }
@@ -41,7 +53,7 @@ const AppointmentForm = () => {
       alert('Failed to book appointment. Please try again later.');
     }
   };
-
+  
   return (
     <div className='w-[100%] h-full'>
       <div className="max-w-4xl mx-auto p-6 mt-10">
