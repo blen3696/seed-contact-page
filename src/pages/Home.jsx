@@ -20,7 +20,7 @@ import AppointmentForm from '../components/AppointmentForm'
 import TestimonialsSlider from '../components/TestimonialsSlider'
 import QRCodePage from '../components/QRCode'
 import Footer from '../components/Footer'
-import ServicesSlider from '../components/ServicesSlider'
+import ServiceCarousel from '../components/ServicesSlider'
 
 
 const Home = () => {
@@ -51,13 +51,13 @@ const Home = () => {
           <img
             src={profile}
             alt="Profile"
-            className="w-[12rem] h-[14rem] sm:w-[13rem] sm:h-[16rem] border-4 border-white object-cover rounded-[30px]"
+            className="w-[13rem] h-[14rem] sm:w-[13rem] sm:h-[16rem] border-4 border-white object-cover rounded-[30px]"
           />
           <div className="mt-5 sm:ml-8 text-center sm:text-left">
             <h1 className=" md:text-3xl font-roboto text-xl font-bold bg-gradient-to-l from-[#FBAC20] to-black bg-clip-text text-transparent">
             ALAZARE SHIFERAW
             </h1>
-            <p className="text-lg sm:text-lg md:text-xl font-bold text-[#FBAC20]">
+            <p className="text-lg sm:text-lg md:text-lg font-bold text-[#FBAC20] mb-6">
             General Manager
             </p>
           </div>
@@ -67,8 +67,8 @@ const Home = () => {
      
       <div className="pt-[26rem] max-w-5xl mx-auto px-10 text-center">
       <p className="text-gray-900 text-[16px] mb-6">
-        We aim to be East Africa’s leading provider of tech-driven engineering solutions and educational services,
-        helping businesses optimize operations, empower teams, and drive innovation with our consulting, training, and research expertise.
+       We aim to lead East Africa in tech-driven engineering and education,
+        helping businesses optimize, empower teams, and innovate through consulting, training, and research.
       </p>
 
      {/* Contact Info Section */}
@@ -132,7 +132,7 @@ const Home = () => {
       </div>
 
     <ProductCarousel />
-    <ServicesSlider />
+    <ServiceCarousel />
     <AppointmentForm />
     <TestimonialsSlider />
     <QRCodePage />
