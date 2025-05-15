@@ -54,10 +54,10 @@ const Home = () => {
             className="w-[13rem] h-[14rem] sm:w-[13rem] sm:h-[16rem] border-4 border-white object-cover rounded-[30px]"
           />
           <div className="mt-5 sm:ml-8 text-center sm:text-left">
-            <h1 className=" md:text-3xl font-roboto text-xl font-bold bg-gradient-to-l from-[#FBAC20] to-black bg-clip-text text-transparent">
+            <h1 className=" md:text-2xl font-roboto w-[13rem] md:w-[16rem] text-xl font-bold bg-gradient-to-l from-[#FBAC20] to-black bg-clip-text text-transparent">
             ALAZARE SHIFERAW
             </h1>
-            <p className="text-lg sm:text-lg md:text-lg font-bold text-[#FBAC20] mb-6">
+            <p className="text-lg w-[13rem]  sm:text-lg md:text-lg font-bold text-[#FBAC20] mb-6">
             General Manager
             </p>
           </div>
@@ -66,7 +66,10 @@ const Home = () => {
 
      
       <div className="pt-[26rem] max-w-5xl mx-auto px-10 text-center">
-      <p className="text-gray-900 text-[16px] mb-6">
+      <p className="text-gray-900 text-[16px] mb-6 lg:hidden">
+       We aim to lead East Africa in tech-driven engineering and education,
+      </p>
+      <p className="text-gray-900 text-[16px] mb-6 hidden lg:block">
        We aim to lead East Africa in tech-driven engineering and education,
         helping businesses optimize, empower teams, and innovate through consulting, training, and research.
       </p>
@@ -93,30 +96,14 @@ const Home = () => {
               </div>
             </a>
 
-            <div className="flex items-center bg-gray-100 px-4 py-3 rounded-xl shadow-sm hover:scale-95 transition-transform duration-300">
-              <FaRegClock className="text-2xl text-[#FBAC20] mr-4" />
-              <div className="text-left text-[12px]">
-                <p className="font-semibold text-[#FBAC20]">Mon - Fri, 9:00 AM - 5:00 PM</p>
-                <p className="text-sm text-gray-600">Office Hours</p>
-              </div>
-            </div>
-
-            <a href="https://maps.app.goo.gl/piX58dU1NGhiye5c7" target="_blank" rel="noopener noreferrer" className="block">
-              <div className="flex items-center bg-gray-100 px-4 py-3 rounded-xl shadow-sm hover:scale-95 transition-transform duration-300">
-                <FaMapMarkerAlt className="text-2xl text-[#FBAC20] mr-4" />
-                <div className="text-left text-[12px]">
-                  <p className="font-semibold text-[#FBAC20]">Addis Ababa, Mexico</p>
-                  <p className="text-sm text-gray-600">Location</p>
-                </div>
-              </div>
-            </a>
+           
           </div>
 
 
         {/* Social Icons */}
         <div className="flex justify-center gap-10 text-3xl text-[#FBAC20] mb-16">
-             <a href="http://www.facebook.com/profile.php?id=100092510080285" target="_blank" rel="noreferrer" className="hover:scale-110 hover:text-white transition">
-          <FaFacebook />
+             <a href="https://maps.app.goo.gl/piX58dU1NGhiye5c7" target="_blank" rel="noopener noreferrer" className="hover:scale-110 hover:text-white transition">
+          <FaMapMarkerAlt />
         </a>
         <a href="https://t.me/ASmemes" target="_blank" className="hover:scale-110 hover:text-white transition">
           <FaTelegramPlane/>

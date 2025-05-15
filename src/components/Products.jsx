@@ -10,14 +10,14 @@ const products = [
   {
     id: 1,
     title: 'CUSTOM CARD',
-    price: 20,
+    price: 2000,
     image: pro_1,
     modalImage: pro_1_large,
   },
   {
     id: 2,
     title: 'CUSTOM PHONECARD',
-    price: 30,
+    price: 1000,
     image: pro_2,
     modalImage: pro_2_large,
   },
@@ -95,7 +95,7 @@ const ProductCarousel = () => {
                           : 'bg-white text-black'
                       }`}
                     >
-                      ${product.price.toFixed(2)}
+                      {product.price.toFixed(2)}
                     </button>
                   </div>
                 ))}

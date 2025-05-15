@@ -1,6 +1,6 @@
 // src/components/Footer.jsx
 import React, { useState } from 'react';
-import { FaFacebook, FaLinkedin, FaTelegramPlane, FaRegAddressBook } from 'react-icons/fa';
+import { FaFacebook, FaLinkedin, FaTelegramPlane, FaRegAddressBook , FaMapMarkerAlt} from 'react-icons/fa';
 import { BsWhatsapp } from 'react-icons/bs';
 import { MdContactPage } from 'react-icons/md';
 import { FiShare2 } from 'react-icons/fi';
@@ -103,9 +103,8 @@ END:VCARD`;
           <div className="flex flex-col items-center">
             <h2 className="md:text-2xl font-roboto text-xl font-bold mb-6 bg-gradient-to-l from-[#FBAC20] to-white bg-clip-text text-transparent">GET IN TOUCH</h2>
             <div className="flex flex-row space-x-6 text-2xl">
-              <a href="http://www.facebook.com/profile.php?id=100092510080285" target="_blank" rel="noreferrer"
-                 className="text-white p-3  hover:scale-110 hover:text-[#FBAC20] transition">
-                <FaFacebook />
+              <a href="https://maps.app.goo.gl/piX58dU1NGhiye5c7" target="_blank" rel="noopener noreferrer"  className="text-white p-3  hover:scale-110 hover:text-[#FBAC20] transition">
+                <FaMapMarkerAlt />
               </a>
               <a href="https://t.me/ASmemes" target="_blank" rel="noreferrer"
                  className="text-white p-3  hover:scale-110 hover:text-[#FBAC20] transition">

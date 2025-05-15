@@ -93,12 +93,12 @@ import pro_2 from '../assets/Web design.png';
 const services = [
   {
     id: 1,
-    title: 'BRANDIN',
+    title: 'BRANDING',
     image: pro_1,
   },
   {
     id: 2,
-    title: 'WEBDESIGNG',
+    title: 'WEB DESIGNING',
     image: pro_2,
   },
   {
@@ -176,7 +176,7 @@ const ServiceCarousel = () => {
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="h-[220px] w-[180px] object-contain"
+                      className="h-[220px] w-[240px] object-contain"
                     />
                   </div>
                   <h3 className="text-xl font-bold mt-4 text-gray-600">
