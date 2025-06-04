@@ -1,4 +1,3 @@
-// src/components/Footer.jsx
 import React, { useState } from 'react';
 import { FaFacebook, FaLinkedin, FaTelegramPlane, FaRegAddressBook , FaMapMarkerAlt} from 'react-icons/fa';
 import { BsWhatsapp } from 'react-icons/bs';

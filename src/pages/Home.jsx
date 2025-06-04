@@ -4,6 +4,8 @@ import profile from '../assets/image.jpg'
 import bgImg from '../assets/hero.jpg'
 import PaymentSection from '../components/PaymentSection'
 import PartnerLogoSlider from '../components/PartnerLogoSlider'
+import HeaderTop from '../components/HeaderTop';
+
 
 import {
   FaEnvelope,
@@ -29,24 +31,26 @@ const Home = () => {
   return (
     <div className="relative overflow-x-hidden min-h-screen font-sans">
       {/*Full-page background image */}
-      <div className="absolute inset-0 -z-30">
-        <img
+       <HeaderTop />
+      <div className="absolute inset-0 -z-30 bg-[#0F1B2B]">
+        {/* <img
           src={bgImg}
           alt="Full Background"
           className="w-full h-full object-cover"
-        />
+        /> */}
       </div>
       <div className="absolute inset-0 bg-gray-300/70 -z-20" />
-      <div className="absolute top-[-34rem] left-[-1.5rem] right-0 w-screen border-4 border-gray-300 overflow-hidden rounded-b-[100px] transform rotate-[-5deg] md:rotate-[-4.7deg] z-10">
-        <img
+      <div className="absolute top-[-32rem] left-[-1.1rem] right-0 w-screen border-4 border-gray-50 overflow-hidden rounded-b-[100px] transform rotate-[-5deg] md:rotate-[-4.7deg] z-10">
+        {/* <img
           src={heroImg}
           alt="Hero"
           className="object-cover w-screen h-[47.75rem]"
-        />
+        /> */}
+        <div className="object-cover w-screen h-[47.75rem] bg-[#0F1B2B]"></div>
       </div>
 
       {/* Profile Card */}
-      <div className="absolute top-[16rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+      <div className="absolute top-[20rem] md:top-[18rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
         <div className="flex flex-col items-center sm:flex-row sm:items-end text-black p-4 rounded-2xl">
           <img
             src={profile}
@@ -65,11 +69,11 @@ const Home = () => {
       </div>
 
      
-      <div className="pt-[26rem] max-w-5xl mx-auto px-10 text-center">
+      <div className="pt-[26rem] max-w-5xl mt-10 mx-auto px-10 text-center">
       <p className="text-gray-900 text-[16px] mb-6 lg:hidden">
        We aim to lead East Africa in tech-driven engineering and education,
       </p>
-      <p className="text-gray-900 text-[16px] mb-6 hidden lg:block">
+      <p className="text-gray-900 text-[16px] mt-10 mb-6 hidden lg:block">
        We aim to lead East Africa in tech-driven engineering and education,
         helping businesses optimize, empower teams, and innovate through consulting, training, and research.
       </p>

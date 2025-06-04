@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { IoCloseSharp } from "react-icons/io5";
 import pro_1 from '../assets/BC Card.png';
-import pro_1_large from '../assets/bc scan.png'; // New large image
+import pro_1_large from '../assets/bc scan.png'; 
 import pro_2 from '../assets/small card.png';
-import pro_2_large from '../assets/bc scan.png'; // New large image
+import pro_2_large from '../assets/bc scan.png';
 
 const products = [
   {
@@ -13,6 +13,7 @@ const products = [
     price: 2000,
     image: pro_1,
     modalImage: pro_1_large,
+     description: 'Premium leather loafers designed for casual wear—blend of elegance, comfort, and long-lasting quality.',
   },
   {
     id: 2,
@@ -20,13 +21,29 @@ const products = [
     price: 1000,
     image: pro_2,
     modalImage: pro_2_large,
+     description: 'Premium leather loafers designed for casual wear—blend of elegance, comfort, and long-lasting quality.',
   },
+  
 ];
-
 const ProductCarousel = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [modalImage, setModalImage] = useState(null);
+  const [modalProduct, setModalProduct] = useState(null);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
+
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setItemsPerPage(products.length);
+      else if (window.innerWidth >= 768) setItemsPerPage(2);
+      else setItemsPerPage(1);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSelect = (product) => {
     const updatedItems = selectedItems.some((item) => item.id === product.id)
@@ -43,18 +60,29 @@ const ProductCarousel = () => {
   const totalAmount = selectedItems.reduce((sum, item) => sum + item.price, 0);
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
+    setCurrentIndex((prev) => {
+      const newIndex = prev - itemsPerPage;
+      return newIndex < 0 ? products.length - itemsPerPage : newIndex;
+    });
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % products.length);
+    setCurrentIndex((prev) => {
+      const newIndex = prev + itemsPerPage;
+      return newIndex >= products.length ? 0 : newIndex;
+    });
   };
 
-  const handleImageClick = (modalImg) => setModalImage(modalImg);
-  const closeModal = () => setModalImage(null);
+  const handleImageClick = (product) => setModalProduct(product);
+  const closeModal = () => setModalProduct(null);
+
+  let visibleProducts = products.slice(currentIndex, currentIndex + itemsPerPage);
+  if (visibleProducts.length < itemsPerPage) {
+    visibleProducts = [...visibleProducts, ...products.slice(0, itemsPerPage - visibleProducts.length)];
+  }
 
   return (
-    <div className="w-full bg-white pt-5">
+    <div className="w-full bg-white pt-5 pb-20">
       <div className="max-w-5xl mx-auto px-4 bg-white">
         <h2 className="text-3xl font-bold text-center mb-2">PRODUCTS</h2>
         <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-6 rounded"></div>
@@ -64,47 +92,40 @@ const ProductCarousel = () => {
           {/* Arrows */}
           <button
             onClick={handlePrev}
-            className="absolute -left-3 top-35 z-10 md:hidden rounded-full text-gray-600"
+            className="absolute -left-6 z-10 p-2 top-35 text-gray-600"
           >
             <IoIosArrowBack size={34} />
           </button>
 
-          <div className="flex flex-col md:flex-row justify-center items-center gap-6 overflow-hidden w-full">
-            <div className="w-full md:w-auto flex justify-center">
-              {products
-                .slice(
-                  window.innerWidth < 768 ? currentIndex : 0,
-                  window.innerWidth < 768 ? currentIndex + 1 : products.length
-                )
-                .map((product) => (
-                  <div key={product.id} className="rounded-xl p-4 w-full md:w-[350px]">
-                    <div className="border-2 border-[#FBAC20] h-[280px] w-full flex items-center justify-center">
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        className="h-[240px] w-[180px] object-contain cursor-pointer"
-                        onClick={() => handleImageClick(product.modalImage)}
-                      />
-                    </div>
-                    <h3 className="text-xl font-bold mt-4 text-gray-600">{product.title}</h3>
-                    <button
-                      onClick={() => handleSelect(product)}
-                      className={`mt-3 w-full py-1 rounded border-2 border-[#FBAC20] ${
-                        selectedItems.some((item) => item.id === product.id)
-                          ? 'bg-[#FBAC20] text-white'
-                          : 'bg-white text-black'
-                      }`}
-                    >
-                      {product.price.toFixed(2)}
-                    </button>
-                  </div>
-                ))}
-            </div>
+          <div className="flex justify-center items-center gap-6 overflow-hidden w-full">
+            {visibleProducts.map((product) => (
+              <div key={product.id} className="rounded-xl p-4 w-full md:w-[280px]">
+                <div className="border-2 border-[#FBAC20] h-[280px] flex items-center justify-center">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="h-[240px] w-[180px] object-contain cursor-pointer"
+                    onClick={() => handleImageClick(product)}
+                  />
+                </div>
+                <h3 className="text-xl font-bold mt-4 text-gray-600">{product.title}</h3>
+                <button
+                  onClick={() => handleSelect(product)}
+                  className={`mt-3 w-full py-1 rounded border-2 border-[#FBAC20] ${
+                    selectedItems.some((item) => item.id === product.id)
+                      ? 'bg-[#FBAC20] text-white'
+                      : 'bg-white text-black'
+                  }`}
+                >
+                  {product.price.toFixed(2)} birr
+                </button>
+              </div>
+            ))}
           </div>
 
           <button
             onClick={handleNext}
-            className="absolute -right-5 top-34  z-10 md:hidden p-2 rounded-full  text-gray-600"
+            className="absolute -right-6 z-10 p-2 top-35 text-gray-600 "
           >
             <IoIosArrowForward size={34} />
           </button>
@@ -114,7 +135,7 @@ const ProductCarousel = () => {
         {selectedItems.length > 0 && (
           <div id="total-section" className="text-center mt-8">
             <h3 className="text-md font-semibold text-gray-800 mb-2">
-              Total Amount: <span className="text-[#FBAC20]">${totalAmount.toFixed(2)}</span>
+              Total Amount: <span className="text-[#FBAC20]">{totalAmount.toFixed(2)} birr</span>
             </h3>
           </div>
         )}
@@ -131,7 +152,7 @@ const ProductCarousel = () => {
       </div>
 
       {/* Modal */}
-      {modalImage && (
+      {modalProduct && (
         <div
           onClick={closeModal}
           className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
@@ -140,23 +161,22 @@ const ProductCarousel = () => {
             onClick={(e) => e.stopPropagation()}
             className="relative bg-white p-4 rounded-lg shadow-lg max-w-[90%] max-h-[90%]"
           >
-            {/* Close button */}
             <button
               onClick={closeModal}
               className="absolute top-2 right-2 text-gray-700 hover:text-black text-2xl font-bold"
             >
               <IoCloseSharp />
             </button>
-
             <img
-              src={modalImage}
-              alt="Product Large"
-              className="max-h-[80vh] max-w-full object-contain"
+              src={modalProduct.modalImage}
+              alt={modalProduct.title}
+              className="max-h-[60vh] max-w-full mx-auto object-contain mb-4"
             />
+            <h3 className="text-xl font-bold mx-auto text-gray-800 mb-2">{modalProduct.title}</h3>
+            <p className="text-gray-600 mx-auto text-sm">{modalProduct.description}</p>
           </div>
         </div>
       )}
-
     </div>
   );
 };

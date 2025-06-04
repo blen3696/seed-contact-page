@@ -55,8 +55,8 @@ const AppointmentForm = () => {
   };
   
   return (
-    <div className='w-[100%] h-full'>
-      <div className="max-w-4xl mx-auto p-6 mt-10">
+    <div className='w-[100%] h-full bg-white'>
+      <div className="max-w-4xl mx-auto p-6 pt-10">
         <h2 className="text-3xl font-bold text-center mb-4">Make An Appointment</h2>
         <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-6 rounded"></div>
 

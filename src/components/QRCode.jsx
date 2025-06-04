@@ -6,7 +6,7 @@ const QRCodePage = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className="min-h-fit bg-white flex flex-col items-center p-8">
+    <div className="min-h-fit bg-white flex flex-col text-center p-8">
       <h2 className="text-3xl font-bold mb-2">Share Using QR Code</h2>
       <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-6 rounded"></div>
 
