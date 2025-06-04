@@ -13,7 +13,7 @@ const products = [
     price: 2000,
     image: pro_1,
     modalImage: pro_1_large,
-     description: 'Premium leather loafers designed for casual wear—blend of elegance, comfort, and long-lasting quality.',
+     description: 'A modern and professional digital business card designed to make a lasting impression. Easily share your contact info, links, and social profiles with a sleek, interactive interface, accessible anytime, anywhere.',
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const products = [
     price: 1000,
     image: pro_2,
     modalImage: pro_2_large,
-     description: 'Premium leather loafers designed for casual wear—blend of elegance, comfort, and long-lasting quality.',
+     description: 'A compact, phone-backed digital business card designed for any professional. Instantly share your contact info, social links, or business profile,no apps, no paper, just seamless connection.',
   },
   
 ];
