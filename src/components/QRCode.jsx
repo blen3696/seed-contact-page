@@ -1,13 +1,15 @@
 import React from "react";
 import { useState } from 'react';
 import qr_logo from '../assets/frame.png';
+import { useTranslation } from 'react-i18next';
 
 const QRCodePage = () => {
+  const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="min-h-fit bg-white flex flex-col text-center p-8">
-      <h2 className="text-3xl font-bold mb-2">Share Using QR Code</h2>
+      <h2 className="text-[26px] font-bold mb-2">{t('Share Using QR Code')}</h2>
       <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-6 rounded"></div>
 
       <div className="flex flex-col items-center mb-12">
@@ -15,7 +17,7 @@ const QRCodePage = () => {
           onClick={() => setModalOpen(true)}
           className="bg-gradient-to-l from-[#FBAC20] to-black max-w-fit mx-auto text-white text-sm px-4 py-2 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-black hover:to-[#FBAC20] transition duration-300"
         >
-          Share My QR Code
+        {t('Share My QR Code')}
         </a>
       </div>
 

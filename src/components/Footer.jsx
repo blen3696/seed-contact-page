@@ -6,8 +6,10 @@ import { FiShare2 } from 'react-icons/fi';
 import logo from '../assets/logo.png';
 import { BiSolidContact } from "react-icons/bi";
 import { IoMdContact } from "react-icons/io";
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+    const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -92,14 +94,14 @@ END:VCARD`;
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 mx-auto">
 
           {/* Left Section - Logo & Info */}
-          <div className="flex flex-col items-center lg:items-start text-center md:text-left">
+          <div className="flex flex-col items-center lg:items-start text-center md:text-left min-w-[45%]">
             <img src={logo} alt="Logo" className="w-36 mb-4" />
-            <h2 className="md:text-3xl font-roboto text-xl font-bold bg-gradient-to-l from-[#FBAC20] to-white bg-clip-text text-transparent">ALAZARE SHIFERAW</h2>
-            <p className="text-white font-semibold">General Manager</p>
+            <h2 className="md:text-2xl font-roboto text-xl font-bold bg-gradient-to-l from-[#FBAC20] to-white bg-clip-text text-transparent">{t('Alazare Shiferaw')}</h2> 
+            <p className="text-white font-semibold">{t('General Manager')}</p>
           </div>
 
           {/* Middle Section - Socials */}
-          <div className="flex flex-col items-center">
+          {/* <div className="flex flex-col items-center">
             <h2 className="md:text-2xl font-roboto text-xl font-bold mb-6 bg-gradient-to-l from-[#FBAC20] to-white bg-clip-text text-transparent">GET IN TOUCH</h2>
             <div className="flex flex-row space-x-6 text-2xl">
               <a href="https://maps.app.goo.gl/piX58dU1NGhiye5c7" target="_blank" rel="noopener noreferrer"  className="text-white p-3  hover:scale-110 hover:text-[#FBAC20] transition">
@@ -118,18 +120,18 @@ END:VCARD`;
                 <FaLinkedin />
               </a>
             </div>
-          </div>
+          </div> */}
 
           {/* Right Section - Actions */}
           <div className="text-white rounded-lg flex flex-col items-center lg:items-start w-full max-w-xs">
-            <h2 className="md:text-2xl font-roboto text-xl font-bold mb-6 bg-gradient-to-l from-[#FBAC20] to-white bg-clip-text text-transparent">GET NOTIFIED</h2>
+            <h2 className="md:text-2xl font-roboto text-xl font-bold mb-6 bg-gradient-to-l from-[#FBAC20] to-white bg-clip-text text-transparent">{t('Get Notified')}</h2>
             <div className='items-start'>
             <button
               onClick={handleShare}
               className="flex items-center gap-3 mb-4 hover:scale-110 hover:text-[#FBAC20]  transition-transform"
             >
               <FiShare2 className="text-2xl" />
-              <span className="text-sm">Share</span>
+              <span className="text-sm">{t('Share')}</span>
             </button>
 
             <button
@@ -137,7 +139,7 @@ END:VCARD`;
               className="flex items-center gap-3 mb-4 hover:scale-110 hover:text-[#FBAC20]  transition-transform"
             >
               <IoMdContact className="text-2xl" />
-              <span className="text-sm">Register</span>
+              <span className="text-sm">{t('Register')}</span>
             </button>
 
             <button
@@ -145,7 +147,7 @@ END:VCARD`;
               className="flex items-center gap-3 hover:scale-110 hover:text-[#FBAC20]  transition-transform"
             >
                <BiSolidContact className="text-2xl" />
-              <span className="text-sm">Add to Contacts</span>
+              <span className="text-sm">{t('Add to Contacts')}</span>
             </button>
             </div>
           </div>
@@ -153,7 +155,7 @@ END:VCARD`;
 
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 mt-10 pt-6 text-center text-white text-sm">
-          &copy; {new Date().getFullYear()} | Powered by <a href="https://seedgit.com/" target='blank' className='text-[#FBAC20]'> S.E.E.D</a>
+          &copy; {new Date().getFullYear()} | {t('Powered by')}<a href="https://seedgit.com/" target='blank' className='text-[#FBAC20]'> S.E.E.D</a>
         </div>
       </div>
 
@@ -162,7 +164,7 @@ END:VCARD`;
       {/* Modal for Registration */}
       {modalOpen && (
         <div className="fixed inset-0 bg-[rgba(0,0,0,0.6)] flex justify-center items-center z-50">
-          <div className="bg-white p-8 rounded-lg w-96">
+          <div className="bg-white p-8 rounded-lg w-[90%] md:w-96">
             <h3 className="text-2xl font-bold mb-2 text-center text-[#0F1B2B]">Register</h3>
             <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-6 rounded"></div>
             <form onSubmit={handleRegisterSubmit}>

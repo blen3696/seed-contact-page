@@ -1,51 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import { FaQuoteLeft, FaQuoteRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import ave1 from '../assets/avator 1.jpg';
 import ave2 from '../assets/avator 2.jpg';
+import { useTranslation } from 'react-i18next';
 
+
+// Sample testimonials
 const testimonials = [
   {
-    name: 'Emily Johnson',
+    name: 'Amanuel S.',
     image: ave1,
-    quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
+    quote: 'S.E.E.D has built an efficient, user-friendly, and reliable website that helped us build a digital brand and enhance our visibility.',
   },
   {
-    name: 'Michael Doe',
+    name: 'Hanna T.',
     image: ave2,
-    quote: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
+    quote: 'They listened carefully to our needs and delivered beyond expectations with their innovative approach to design and functionality.',
   },
-  {
-    name: 'Sarah Williams',
-    image: ave1,
-    quote: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
-  },
-
 ];
 
+// Function to trim quote to 12 words
+const trimQuote = (quote, maxWords = 12) => {
+  const words = quote.split(' ');
+  return words.length > maxWords
+    ? words.slice(0, maxWords).join(' ') + '...'
+    : quote;
+};
+
 const TestimonialsSlider = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
+  // Auto-slide with pause on hover
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [isHovered]);
 
   const { name, image, quote } = testimonials[currentIndex];
 
-  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  const goToPrevious = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-
   return (
     <div className="bg-white py-16 px-4 text-center relative overflow-hidden">
-      <h2 className="text-3xl font-bold mb-2">Testimonials</h2>
+      <h2 className="text-[26px] font-bold mb-2">{t('Testimonials')}</h2>
       <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-3 rounded"></div>
 
-      <div className="relative max-w-lg mx-auto bg-white p-8">
-        <FaQuoteLeft className="text-5xl text-[#f0bc62] absolute top-4 left-4" />
-        <FaQuoteRight className="text-5xl text-[#f0bc62] absolute bottom-4 right-4" />
+      <div
+        className="relative max-w-lg mx-auto bg-white p-8"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <FaQuoteLeft className="text-4xl text-[#f0bc62] absolute top-4 left-4" />
+        <FaQuoteRight className="text-4xl text-[#f0bc62] absolute bottom-4 right-4" />
 
         <img
           src={image}
@@ -54,8 +64,10 @@ const TestimonialsSlider = () => {
         />
 
         <div className="max-w-[80%] mx-auto">
-          <p className="text-gray-700 mt-6 text-base leading-relaxed">{quote}</p>
-          <p className="mt-4 font-semibold text-[#FBAC20]">– {name}</p>
+          <p className="text-gray-700 mt-6 text-base leading-relaxed">
+            {trimQuote(t(quote))}
+          </p>
+          <p className="mt-4 font-semibold text-[#FBAC20]">– {t(name)}</p>
         </div>
       </div>
 
@@ -70,16 +82,10 @@ const TestimonialsSlider = () => {
           />
         ))}
       </div>
-
-      {/* Navigation Arrows */}
-      {/* <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-black p-2  rounded-full shadow-lg cursor-pointer" onClick={goToPrevious}>
-        <FaArrowLeft />
-      </div>
-      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-black p-2  rounded-full shadow-lg cursor-pointer" onClick={goToNext}>
-        <FaArrowRight />
-      </div> */}
     </div>
   );
 };
 
 export default TestimonialsSlider;
+
+

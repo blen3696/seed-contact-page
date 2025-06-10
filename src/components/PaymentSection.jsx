@@ -5,6 +5,7 @@ import c_logo from '../assets/CBE-logo.png';
 import a_logo from '../assets/abyssinia-logo.jpg';
 import aw_logo from '../assets/Awash-logo.png';
 import qr_logo from '../assets/qr.png';
+import { useTranslation } from 'react-i18next';
 
 const paymentOptions = [
   { name: 'TeleBirr', logo: t_logo, bankNumber: '0910700960', qr_code: qr_logo },
@@ -14,6 +15,7 @@ const paymentOptions = [
 ];
 
 export default function PaymentSection() {
+  const { t } = useTranslation();
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [copied, setCopied] = useState(false);
 
@@ -25,9 +27,9 @@ export default function PaymentSection() {
 
   return (
     <div className="text-center py-10 px-4 sm:px-6 md:px-8">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-1">Payment</h2>
+      <h2 className="text-[26px]  font-bold mb-1">{t('Payment')}</h2>
       <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-3 rounded"></div>
-      <p className="text-lg font-semibold mb-6">Choose your payment method</p>
+      <p className="text-md text-gray-700 font-semibold mb-6">{t('Choose your payment method')}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
         {paymentOptions.map((option, index) => (
@@ -37,7 +39,7 @@ export default function PaymentSection() {
             onClick={() => setSelectedPayment(option)}
           >
             <img src={option.logo} alt={option.name} className="h-6 sm:h-8 mr-3" />
-            <span className="text-gray-800 font-medium text-sm sm:text-base">{option.name}</span>
+            <span className="text-gray-800 font-medium text-sm sm:text-base">{t(option.name)}</span>
           </button>
         ))}
       </div>
@@ -54,7 +56,7 @@ export default function PaymentSection() {
             </button>
 
             <h3 className="text-lg sm:text-xl font-semibold mb-4">
-              {selectedPayment.name} Payment
+              {t(selectedPayment.name)} {t('Payment')}
             </h3>
 
             <div className="bg-gray-100 rounded-lg h-40 flex items-center justify-center mb-4">
@@ -65,7 +67,7 @@ export default function PaymentSection() {
               />
             </div>
 
-            <p className="text-sm text-gray-600 mb-2">Bank Number:</p>
+            <p className="text-sm text-gray-600 mb-2">{t('Bank Number')}:</p>
             <div className="flex justify-center items-center space-x-2 bg-gray-100 px-4 py-2 rounded">
               <span className="font-medium text-gray-800 text-sm sm:text-base">
                 {selectedPayment.bankNumber}
@@ -75,7 +77,7 @@ export default function PaymentSection() {
                 onClick={() => handleCopy(selectedPayment.bankNumber)}
               />
             </div>
-            {copied && <p className="text-green-600 mt-2 text-sm">Copied!</p>}
+            {copied && <p className="text-green-600 mt-2 text-sm">{t('Copied')}!</p>}
           </div>
         </div>
       )}

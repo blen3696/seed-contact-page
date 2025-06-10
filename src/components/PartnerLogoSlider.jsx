@@ -3,15 +3,17 @@ import partner1 from '../assets/partner-image-1.png';
 import partner2 from '../assets/partner-image-2.png';
 import partner3 from '../assets/partner-image-3.png';
 import partner4 from '../assets/partner-image-4.png';
+import { useTranslation } from 'react-i18next';
 
 
 
 const PartnerLogoSlider = () => {
+  const { t } = useTranslation();
   const logos = [partner1, partner2, partner3, partner4];
 
   return (
     <div className="bg-white py-10 overflow-hidden">
-      <h2 className="text-2xl font-bold mb-2 text-center">Our Partners</h2>
+      <h2 className="text-2xl font-bold mb-2 text-center">{t('Our Partners')}</h2>
       <div className="w-20 h-1 bg-[#FBAC20] mx-auto mb-10 rounded"></div>
 
       <div className="relative w-full overflow-hidden">
